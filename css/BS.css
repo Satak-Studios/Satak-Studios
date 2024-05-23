@@ -1,28 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-
-ul{
-  list-style: none;
-}
-
-li{
-  font-size: 1.125vw;
-}
-
 .panel{
   width: 20%;
   background-color: rgba(20, 20, 20, 0.271);
-  padding: 15px;
+  padding: 30px;
   border-radius: 22px;
-  float: right;
   margin-top: 7%;
+  margin-right: 10%;
+  margin-left: auto;
+  float: right;
 }
 
 .title{
-  font-weight: bold;
-  font-size: xx-large;
+  font-weight: bolder;
+  font-size: xxx-large;
   text-align: center;
-  padding-top: 4%;
   padding-bottom: 2%;
 }
 
@@ -35,15 +27,13 @@ li{
 }
 
 .game-info{
-  background-color: rgba(20, 20, 20, 0.271);
   padding-left: 5%;
   padding-right: 5%;
   margin-top: 25px;
   margin-bottom: 5%;
-  max-width: 50%;
-  display: block;
-  float: left;
-  margin-left: 10%;
+  max-width: 58%;
+  margin-left: 5%;
+  margin-right: auto;
 }
 
 .main-m{
@@ -53,12 +43,12 @@ li{
 
 .Desc{
   margin-top: 5%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 1%;
   margin-left: 2%;
   margin-right: 2%;
   text-align: center;
-  font-size: large;
+  font-size: larger;
+  font-weight: 400;
   background-color: rgba(20, 20, 20, 0.271);
 }
 
@@ -70,6 +60,7 @@ li{
   margin-right: 2%;
   text-align: center;
   font-size: large;
+  color: rgba(240, 248, 255, 0.795);
   background-color: rgba(20, 20, 20, 0.271);
 }
 
@@ -111,17 +102,25 @@ li{
 }
 
 .sys-req{
-  background-color: cadetblue;
-  width: 100%;
-  list-style-type: none;
-  padding: 0;
-  max-width: 50%;
   text-align: center;
-  
-  position: absolute;
-  top: 800px;
-  left: 10%;
-  right: 20%;
+  background-color: rgba(20, 20, 20, 0.271);
+  margin-top: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding-bottom: 5%;
+  border-radius: 12px;
+}
+
+.sys-child{
+  width: 75%;
+  border: #00b8e6;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: larger;
+  max-height: 25%;
+  padding: 50;
 }
 
 .sys-req-m{
@@ -143,14 +142,56 @@ li{
   font-size:2.6vw;
 }
 
-.legal-m{
+.legal{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: rgba(20, 20, 20, 0.271);
+  margin-top: 5%;
+}
+
+.legal-item{
+  margin: 1%;
+  border-radius: 1%;
+  margin-bottom: 0%;
+  padding-bottom: auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+}
+
+.legal-item:hover{
+  background-color: rgba(0, 0, 0, 0.271);
+  opacity: 2;
+  color: cornflowerblue;
+}
+
+.others{
   text-align: center;
   background-color: rgba(20, 20, 20, 0.271);
   margin-top: 5%;
   padding-top: 2%;
+  padding-bottom: 5%;
   margin-left: 2%;
   margin-right: 2%;
-  padding-bottom: 2%;
+  border-radius: 12px;
+}
+
+.holder-items{
+  width: 20%;
+}
+
+.legal-m{
+  display: flex;
+  justify-content:space-evenly;
+  text-align:center;
+  background-color: rgba(20, 20, 20, 0.271);
+  margin-top: 5%;
+}
+
+.legal-item-m{
+  margin: 1%;
+  font-size: medium;
 }
 
 .legal-m:link{
@@ -171,10 +212,74 @@ li{
   width: 40%;
 }
 
+.downloads-main{
+  text-align: center;
+  background-color: rgba(20, 20, 20, 0.271);
+  margin-top: 5%;
+  padding-top: 2%;
+  padding-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 12px;
+}
+
+.downloads{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.download-item{
+  font-weight: 800;
+  background-color: black;
+  border-radius: 12px;
+  box-shadow: 12px;
+  text-align: center;
+  width: 15%;
+  padding: 2%;
+  margin: 2% auto;
+}
+
+.downloads-main-m{
+  text-align: center;
+  background-color: rgba(20, 20, 20, 0.271);
+  margin-top: 5%;
+  padding-top: 2%;
+  padding-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 12px;
+}
+
+.downloads-m{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+}
+
+.download-item-m{
+  font-weight: 800;
+  background-color: black;
+  border-radius: 12px;
+  box-shadow: 12px;
+  text-align: center;
+  width: max-content;
+  height: max-content;
+  padding: 2%;
+  margin: 2% auto;
+}
+
+.countDown{
+  display: none;
+  background-color: black;
+  width: 90%;
+  height: 90%;
+}
+
    .button {
      background-color: #04AA6D;
      border: none;
-     color: rgb(0, 140, 255);
+     color: rgb(123, 148, 168)7;
      padding: 20px;
      text-align: center;
      text-decoration: none;
@@ -199,10 +304,6 @@ li{
     border: none;
   }
    .button4 {border-radius: 12px;}
-
-   @media screen and (max-width: 550px) {
-    
-  }
 
   /*GALLERY*/
   .column {

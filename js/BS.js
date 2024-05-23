@@ -1,43 +1,30 @@
-
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 function setLink() {
-  // Get the user agent string
   const userAgent = navigator.userAgent;
 
-  // Get the number of logical processors
-  const logicalProcessors = navigator.hardwareConcurrency;
-
-  // Determine the CPU architecture based on the user agent string and number of logical processors
-  let cpuArchitecture;
-  if (userAgent.includes('Android')) {
-    if (logicalProcessors <= 2) {
-      cpuArchitecture = 'armeabi-v7a';
-    } else {
-      cpuArchitecture = 'arm64-v8a';
-    }
-  } else if (userAgent.includes('WOW64') || userAgent.includes('Win64')) {
-    cpuArchitecture = 'x64';
+  //let link = "d/BSS/PC/BSS2.exe";
+  let link = '#';
+if (userAgent.includes('WOW64') || userAgent.includes('Win64')) {
+    link = 'd/BSS/PC/BSS2.exe';
+    //let link = "#";
   } else {
-    cpuArchitecture = 'x86';
+    //link = 'd/BSS/PC/BSS2.exe';
+    link = 'd/BSS/PC/BSS2.x86.zip';
+    //let link = "#";
   }
 
-  // Modify the link based on the CPU architecture
-  let link = "d/BSS/v2/BSS2.apk";
-  if (cpuArchitecture === 'x86') {
-    //link = 'https://archive.satak.gq/d/BS/c/BALL SURFERS (X86).exe';
-    link = link;
-  } else {
-    //link = 'https://archive.satak.gq/d/BS/c/BALL SURFERS (X64).exe';
-    link = "#";
-  }
-
-  // Use the link variable to set the href attribute of an <a> element
   const linkElement = document.getElementById('my-link');
   linkElement.href = link;
   downloadGame(link);
 }
 
 function setLinkMob() {
-  let link = "d/BSS/v2/BSS2.apk";
+  let link = "d/BSS/Android/v2/BSS2.apk";
+  //let link = "#";
+  const linkElement = document.getElementById('my-link');
+  
   linkElement.href = link;
   downloadGame(link);
 }
@@ -47,36 +34,99 @@ function downloadGame(_link,){
 }
 
 function myFunction(imgs) {
-  var trailer = document.getElementById("trailer");
+  var trailer;
+  var expandImg;
+  if (isMobileDevice()) {
+    trailer = document.getElementById("trailer-m");
+  }else{
+    trailer = document.getElementById('trailer')
+  }
   trailer.style.display = "none";
-  // Get the expanded image
-  var expandImg = document.getElementById("expandedImg");
+  if (isMobileDevice()) {
+    expandImg = document.getElementById("expandedImg-m");
+  }else{
+    expandImg = document.getElementById('expandedImg')
+  }
   expandImg.style.display = "block";
-  // Use the same src in the expanded image as the image being clicked on from the grid
   expandImg.src = imgs.src;
 
-  // Show the container element (hidden with CSS)
   expandImg.parentElement.style.display = "block";
 }
 
 function myVid(vids) {
-  var trailer = document.getElementById("trailer");
-  var expandImg = document.getElementById("expandedImg");
+  var trailer;
+  var expandImg;
+  if (isMobileDevice()) {
+    trailer = document.getElementById("trailer-m");
+  }else{
+    trailer = document.getElementById('trailer')
+  }
+  if (isMobileDevice()) {
+    var expandImg = document.getElementById("expandedImg-m");
+  }else{
+    var expandImg = document.getElementById('expandedImg')
+  }
+  expandImg.src = vids.src;
   expandImg.style.display = "none";
   trailer.style.display = "block";
 }
-let totalDownload = 0;
 
-function increaseDownload(){
-  totalDownload ++;
-  console.log("Downloads = " + totalDownload);
-  SaveDownloads();
+//IMportant
+var downloads = 64;
+
+function countup(to, element, interval) {
+  let from = 0;
+  let step = to > from ? 1 : -1;
+
+  let counter = setInterval(function(){
+    if ((from + step) * step > to * step) {
+      from = to;
+      element.innerText = from;
+      clearInterval(counter);
+    } else {
+      from += step;
+      element.innerText = from;
+    }
+  }, interval);
 }
 
-function SaveDownloads(){
-  console.log("This is a Dummy")
-}
+function handleScroll() {
+  var element;
+  var a, b, c, d;
 
-function LoadDownload(){
-  document.getElementById("downloadsText") = totalDownload;
+  if (isMobileDevice()) {
+    a = document.getElementById('data-galaxy-m');
+    b = document.getElementById('data-amazon-m');
+    c = document.getElementById('data-itch-m');
+    d = document.getElementById('data-web-m');
+    element = document.getElementById('downloads-m');
+  } else {
+    a = document.getElementById('data-galaxy');
+    b = document.getElementById('data-amazon');
+    c = document.getElementById('data-itch');
+    d = document.getElementById('data-web');
+    element = document.getElementById('downloads');
+  }
+
+  var bounding = element.getBoundingClientRect();
+  var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  if (
+    bounding.top >= -bounding.height / 2 &&
+    bounding.bottom <= viewportHeight + bounding.height / 2
+  ) {
+    countup(688, a, 5);
+    countup(5, b, 500);
+    countup(76, c, 30);
+    countup(downloads, d, 40);
+    
+    window.removeEventListener('scroll', handleScroll);
+  }
+}
+window.addEventListener('scroll', handleScroll);
+
+function popUp(){
+  var modal = document.getElementById('modal')
+
+  modal.style.display = "block";
 }
